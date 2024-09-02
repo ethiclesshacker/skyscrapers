@@ -10,12 +10,13 @@ const data = {
         4: 1,
         5: 1
     },
-    "correctAnswer":[1,2,3,4,5]
+    "correctAnswer":[1,2,3,4,5],
+    "level": 5
 }
 
 function handleBlockClick(event){
     console.log("Click!")
-    event.target.innerText = parseInt(event.target.innerText) + 1;
+    event.target.innerText = (parseInt(event.target.innerText) + 1) % (data.level+1);
 }
 
 function setupGrid() {
