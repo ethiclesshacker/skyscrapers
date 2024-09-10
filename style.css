@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     user-select: none;
+    font-family: "Baloo Thambi 2"
 }
 
 body {
@@ -65,25 +66,36 @@ body {
     border: 1px solid grey;
     border-radius: 2rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-around;   
+}
 
+.parent{
+    transform: rotate3d(1, 1, 1, 270deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .layout {
-    display: grid;
     width: 400px;
     height: 200px;
-    grid-template-columns: 20% 20% 20% 20% 20% ;
+    margin: 30px;
+    /* grid-template-columns: 20% ; 20% 20% 20% 20% ; */
+    display: grid;
+    grid-template-columns: 20% ;
     grid-template-rows: 20% 20% 20% 20% 20% ;
-    gap: 1px;
-    transform: rotate3d(1, 1, 1, 270deg);
-
+    /* gap: 1px; */
+    /* transform: rotate3d(1, 1, 1, 270deg); */
+    justify-content: center;
+    background-color: #79ad51;
 }
 
 .gridElement {
-    font-size: 2rem;
     background-color: #79ad51;
+    border: 2px solid #d1ffa1;
+    font-size: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -92,3 +104,28 @@ body {
 .gridElement:hover {
     cursor: pointer;
 } 
+
+
+.circle {
+    border-radius: 50%;
+    width: 80px;
+    height: 40px;
+    background-color: #ffda00;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* transform: rotate3d(1, 1, 1, 270deg); */
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+    width: 5rem;
+    height: 2.5rem;
+    background-color: #f56523;
+    color: white;
+    box-shadow: 0px 0.30rem #d25a15;
+}
