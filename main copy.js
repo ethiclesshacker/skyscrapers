@@ -24,7 +24,25 @@ const l2_end = {
     y: 178.403
 }
 
+const l3_start = {
+    x: 0,
+    y: 0
+}
 
+const l3_end = {
+    x: 0,
+    y: 0
+}
+
+const l4_start = {
+    x: 0,
+    y: 0
+}
+
+const l4_end = {
+    x: 0,
+    y: 0
+}
 
 let flag = 1;
 
@@ -58,19 +76,6 @@ function setup() {
         document.querySelector(".sizes").innerHTML += `<div id="grid-element-${i}" class="grid-element">0</div>`;
         document.querySelector(".background").innerHTML += `<g transform="translate(${l1_points[i].x + 40},${l1_points[i].y - 138})"><g id="building-location-${i}" transform="scale(1)">  </g></g>`
     }
-    if (levels[currentLevel]['2d']) {
-        document.querySelector(".sizes").innerHTML = "";
-        for (var i = 0; i < levelDivs; i++) {
-            for (var j = 0; j < levelDivs; j++) {
-                document.querySelector(".sizes").innerHTML += `<div id="grid-element-${i}" class="grid-element">0</div>`;
-            }
-        }
-        document.querySelector(".sizes").classList.add("grid");
-        document.querySelector(".grid").style.gridTemplateColumns = `repeat(${levelDivs}, 1fr)`;
-        document.querySelector(".sizes").style.height = "auto";
-        document.querySelector(".sizes").style.width = "auto";
-
-    }
     // document.querySelector(".sizes").insertAdjacentHTML("beforebegin",characters.alice);
     // document.querySelector(".top-view").innerHTML += characters.bob;
     document.querySelector("#alice-text-top").innerHTML = levels[currentLevel]["a"];
@@ -80,108 +85,6 @@ function setup() {
     document.querySelectorAll(".grid-element").forEach((item) => {
         item.addEventListener("click", handleBlockClick);
     })
-}
-
-function multiRowSetup() {
-    const l1_start = {
-        x: 0,
-        y: 132.151
-    }
-
-    const l1_end = {
-        x: 259.64,
-        y: 0
-    }
-
-    const l2_end = {
-        x: 550,
-        y: 161.557
-    }
-
-    const l2_start = {
-        x: 284.835,
-        y: 287.479
-    }
-
-    const l3_start = {
-        x: 259.64,
-        y: 0
-    }
-
-    const l3_end = {
-        x: 550,
-        y: 161.557
-    }
-
-    const l4_end = {
-        x: 284.835,
-        y: 287.479
-    }
-
-    const l4_start = {
-        x: 0,
-        y: 132.151
-    }
-    const levelDivs = levels[currentLevel]["max"];
-    var l1_x_len = (l1_end.x - l1_start.x)
-    var l1_y_len = (l1_end.y - l1_start.y)
-    var l1_points = [{ x: l1_start.x, y: l1_start.y }]
-
-    var l2_x_len = (l2_end.x - l2_start.x)
-    var l2_y_len = (l2_end.y - l2_start.y)
-    var l2_points = [{ x: l2_start.x, y: l2_start.y }]
-
-    var l3_x_len = (l3_end.x - l3_start.x)
-    var l3_y_len = (l3_end.y - l3_start.y)
-    var l3_points = [{ x: l3_start.x, y: l3_start.y }]
-
-    var l4_x_len = (l4_end.x - l4_start.x)
-    var l4_y_len = (l4_end.y - l4_start.y)
-    var l4_points = [{ x: l4_start.x, y: l4_start.y }]
-
-    for (var i = 1; i <= levelDivs; i++) {
-        l1_points.push({
-            x: l1_start.x + (l1_x_len / levelDivs) * i,
-            y: l1_start.y + (l1_y_len / levelDivs) * i
-        })
-        l2_points.push({
-            x: l2_start.x + (l2_x_len / levelDivs) * i,
-            y: l2_start.y + (l2_y_len / levelDivs) * i
-        })
-        l3_points.push({
-            x: l3_start.x + (l3_x_len / levelDivs) * i,
-            y: l3_start.y + (l3_y_len / levelDivs) * i
-        })
-        l4_points.push({
-            x: l4_start.x + (l4_x_len / levelDivs) * i,
-            y: l4_start.y + (l4_y_len / levelDivs) * i
-        })
-    }
-    document.querySelector(".background").innerHTML = "";
-    document.querySelector(".sizes").innerHTML = "";
-    document.querySelector("#level-number").innerHTML = ` ${currentLevel}`;
-
-    // Adding number of elements to the both grids.
-    for (var i = 0; i < levelDivs; i++) {
-        //  fill="#79AD51"
-        document.querySelector(".background").innerHTML += `<path id="building-block-${i}" class="grid-block" d="M${l1_points[i].x} ${l1_points[i].y}L${l1_points[i + 1].x} ${l1_points[i + 1].y}L${l2_points[i + 1].x} ${l2_points[i + 1].y}L${l2_points[i].x} ${l2_points[i].y}Z" stroke="#d1ffa1" stroke-width="3" stroke-miterlimit="10"/>`;
-        document.querySelector(".background").innerHTML += `<path id="building-block-${i}" class="grid-block" d="M${l3_points[i].x} ${l3_points[i].y}L${l3_points[i + 1].x} ${l3_points[i + 1].y}L${l4_points[i + 1].x} ${l4_points[i + 1].y}L${l4_points[i].x} ${l4_points[i].y}Z" stroke="#d1ffa1" stroke-width="3" stroke-miterlimit="10"/>`;
-        document.querySelector(".sizes").innerHTML += `<div id="grid-element-${i}" class="grid-element">0</div>`;
-        // document.querySelector(".background").innerHTML += `<g transform="translate(${l1_points[i].x + 40},${l1_points[i].y - 138})"><g id="building-location-${i}" transform="scale(1)">  </g></g>`
-    }
-    if (levels[currentLevel]['2d']) {
-        document.querySelector(".sizes").innerHTML = "";
-        for (var i = 0; i < levelDivs; i++) {
-            for (var j = 0; j < levelDivs; j++) {
-                document.querySelector(".sizes").innerHTML += `<div id="grid-element-${i}" class="grid-element">0</div>`;
-            }
-        }
-        document.querySelector(".sizes").classList.add("grid");
-        document.querySelector(".grid").style.gridTemplateColumns = `repeat(${levelDivs}, 1fr)`;
-        document.querySelector(".sizes").style.height = "auto";
-        document.querySelector(".sizes").style.width = "auto";
-
-    }
 }
 
 function handleBlockClick(event) {
@@ -224,7 +127,6 @@ function handleBlockClick(event) {
 function boardState() {
     flag = 1;
     const numString = document.querySelector(".sizes").textContent.trim();
-    console.log(numString)
     for (let i = 0; i < numString.length; i++) {
         var currentNum = parseInt(numString[i]);
 
@@ -233,7 +135,7 @@ function boardState() {
             document.getElementById(`grid-element-${i}`).style.backgroundColor = "white"
         } else {
             document.getElementById(`grid-element-${i}`).style.color = "white"
-            document.getElementById(`grid-element-${i}`).style.backgroundColor = "#ff5050"
+            document.getElementById(`grid-element-${i}`).style.backgroundColor = "red"
             flag = 0;
         }
     }
@@ -327,6 +229,3 @@ function checkSolution() {
 document.querySelector("button#submit").addEventListener("click", checkSolution)
 
 setup();
-// multiRowSetup();
-
-
